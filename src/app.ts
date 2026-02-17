@@ -68,7 +68,7 @@ app.use("/api/purchases", purchaseRoutes);
 
 
 app.use(globalErrorHandler);
-app.get("/", (req: Request, res: Response) => {
+app.get("/", (_req: Request, res: Response) => {
   res.send("Welcome to Server");
 });
 

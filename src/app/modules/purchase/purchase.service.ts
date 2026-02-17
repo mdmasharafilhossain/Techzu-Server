@@ -18,6 +18,13 @@ const reservationRecord = await transaction.reservation.findUnique({
  if (!reservationRecord || reservationRecord.userId !== userId) {
       throw AppError.badRequest("Invalid reservation");
     }
+   if (reservationRecord.expiresAt < new Date()) {
+  throw AppError.conflict("Reservation expired");
+}
+if (reservationRecord.status === "PURCHASED"){
+    throw AppError.conflict("Already purchased");
+}
+
 await transaction.reservation.update({
       where: { id: reservationId },
       data: { status: "PURCHASED" }

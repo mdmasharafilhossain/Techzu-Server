@@ -30,9 +30,7 @@ export const reserveService = async (userId: string, dropId: string) => {
                 expiresAt: new Date(Date.now() + 60000)
             }
         });
-
         getIO().emit("stock:update");
-
         return reservation;
     });
 };
