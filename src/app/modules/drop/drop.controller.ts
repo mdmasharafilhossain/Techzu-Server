@@ -6,9 +6,8 @@ import { AppError } from "../../utils/helper/AppError";
 export const createDropController = async ( req: Request, res: Response, next: NextFunction
 ) => {
   try {
-    const validatedData = createDropSchema.parse(req.body);
-    const result = await createDropService(validatedData);
-
+    
+    const result = await createDropService(req.body);
     res.status(201).json({
       success: true,
       data: result

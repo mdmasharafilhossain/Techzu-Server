@@ -15,6 +15,14 @@ export const createDropSchema = z.object({
         .int("Stock must be an integer")
         .positive("Stock must be greater than 0")
         .max(100000, "Stock is too large"),
-    startsAt: z.string()
+   startsAt: z
+    .coerce
+    .date()
+    .refine(
+      (date) => date.getTime() >= Date.now(),
+      {
+        message: "Start date cannot be in the past"
+      }
+    )
 
 });
