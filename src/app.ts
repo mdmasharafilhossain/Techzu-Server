@@ -3,6 +3,9 @@ import 'dotenv/config';
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
+import dropRoutes from "./app/modules/drop/drop.routes";
+import reservationRoutes from "./app/modules/reservation/reservation.routes";
+import purchaseRoutes from "./app/modules/purchase/purchase.routes";
 
 
 const app = express();
@@ -58,6 +61,9 @@ app.use(cookieParser());
 // );
 
 
+app.use("/api/drops", dropRoutes);
+app.use("/api/reservations", reservationRoutes);
+app.use("/api/purchases", purchaseRoutes);
 
 
 
