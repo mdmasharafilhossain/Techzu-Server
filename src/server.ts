@@ -3,7 +3,9 @@ import { Server } from "http";
 import dotenv from "dotenv";
 import { prisma } from "./app/config/db";
 import app from "./app";
-
+import http from "http";
+import { initSocket } from "./app/socket";
+import { startExpirationJob } from "./app/jobs/expiration.job";
 
 
 
@@ -23,8 +25,9 @@ async function connectToDB() {
 const startServer = async () => {
     try {
           await connectToDB()
-       
-
+         const httpServer = http.createServer(app);
+          initSocket(httpServer);
+             startExpirationJob();
         server = app.listen(process.env.PORT, () => {
             console.log(`Server is listening to port ${process.env.PORT}`);
         });

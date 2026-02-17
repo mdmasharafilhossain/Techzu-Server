@@ -1,8 +1,7 @@
 import { prisma } from "../config/db";
 import { getIO } from "../socket";
-
 export const startExpirationJob = () => {
-  setInterval(async () => {
+     setInterval(async () => {
        const expiredReservations = await prisma.reservation.findMany({
             where: {
                    status: "RESERVED",
@@ -26,4 +25,5 @@ export const startExpirationJob = () => {
     }
 
   }, 5000);
+  console.log("Expiration job started");
 };
