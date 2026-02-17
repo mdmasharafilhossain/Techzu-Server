@@ -8,8 +8,17 @@ export const createDropService = async (dropPayload: unknown) => {
     throw AppError.badRequest(parsedData.error.issues[0].message);
   }
   const validatedDropData = parsedData.data;
+  const existingDrop = await prisma.drop.findFirst({
+    where: {
+      name: validatedDropData.name,
+      price: validatedDropData.price
+    }
+  });
+
+  if (existingDrop) {
+    throw AppError.badRequest("Drop with same name and price already exists");
+  }
  return prisma.drop.create({
-   
     data: {
       ...validatedDropData,
       availableStock: validatedDropData.totalStock

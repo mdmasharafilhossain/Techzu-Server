@@ -1,5 +1,8 @@
 import { z } from "zod";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+import dayjs from "dayjs";
 
+dayjs.extend(customParseFormat);
 export const createDropSchema = z.object({
     name: z
         .string()
@@ -16,13 +19,18 @@ export const createDropSchema = z.object({
         .positive("Stock must be greater than 0")
         .max(100000, "Stock is too large"),
    startsAt: z
-    .coerce
-    .date()
-    .refine(
-      (date) => date.getTime() >= Date.now(),
-      {
-        message: "Start date cannot be in the past"
+    .string()
+    .transform((value) => {
+      const parsed = dayjs(value, "DD-MM-YYYY, hh:mm A");
+
+      if (!parsed.isValid()) {
+        throw new Error("Invalid date format");
       }
-    )
+
+      return parsed.toDate();
+    })
+    .refine((date) => date >= new Date(), {
+      message: "Start date cannot be in the past"
+    })
 
 });
