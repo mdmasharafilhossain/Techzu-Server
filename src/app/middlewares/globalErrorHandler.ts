@@ -7,7 +7,7 @@ import { AppError } from '../utils/helper/AppError';
 
 
 
-export const errorHandler = ( err: Error | AppError, req: Request, res: Response, _next: NextFunction
+export const globalErrorHandler = ( err: Error | AppError, req: Request, res: Response, _next: NextFunction
 ) => {
   let error = { ...err };
   error.message = err.message;

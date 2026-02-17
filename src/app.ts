@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import dropRoutes from "./app/modules/drop/drop.routes";
 import reservationRoutes from "./app/modules/reservation/reservation.routes";
 import purchaseRoutes from "./app/modules/purchase/purchase.routes";
+import { globalErrorHandler } from "./app/middlewares/globalErrorHandler";
 
 
 const app = express();
@@ -66,8 +67,7 @@ app.use("/api/reservations", reservationRoutes);
 app.use("/api/purchases", purchaseRoutes);
 
 
-
-
+app.use(globalErrorHandler);
 app.get("/", (req: Request, res: Response) => {
   res.send("Welcome to Server");
 });
