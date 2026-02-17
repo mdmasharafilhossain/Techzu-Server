@@ -11,7 +11,6 @@ export const purchaseService = async (userId: string,reservationId: string) =>{
  if (!reservationId) {
        throw AppError.badRequest("Reservation ID is required");
   }
-
   return prisma.$transaction(async (transaction) => {
 const reservationRecord = await transaction.reservation.findUnique({
       where: { id: reservationId }
