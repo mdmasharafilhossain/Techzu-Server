@@ -29,8 +29,8 @@ const startServer = async () => {
 
   
        startExpirationJob();
-
-    server = httpServer.listen(process.env.PORT, () => {
+const PORT = process.env.PORT || 5000;
+    server = httpServer.listen(PORT, () => {
       console.log(`Server running on port ${process.env.PORT}`);
     });
 
