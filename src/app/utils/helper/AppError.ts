@@ -26,9 +26,8 @@ export class AppError extends Error {
     static forbidden(message: string = 'Forbidden') {
         return new AppError(message, 403);
     }
-
     static notFound(message: string = 'Resource not found') {
-        return new AppError(message, 404);
+         return new AppError(message, 404);
     }
 
     static conflict(message: string = 'Conflict') {
