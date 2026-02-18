@@ -22,7 +22,6 @@ export class AppError extends Error {
     static unauthorized(message: string = 'Unauthorized') {
         return new AppError(message, 401);
     }
-
     static forbidden(message: string = 'Forbidden') {
         return new AppError(message, 403);
     }

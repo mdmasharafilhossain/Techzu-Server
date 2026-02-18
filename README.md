@@ -139,6 +139,7 @@ cd Techzu-Server
 npm install
 ````
 ## 2️⃣ Setup Environment Variables
+Create a .env file 
 ```bash
 DATABASE_URL="postgresql://database_user:database_password@localhost:5432/database_name?schema=public"
 PORT=5000
