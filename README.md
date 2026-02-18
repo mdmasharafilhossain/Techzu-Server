@@ -76,7 +76,7 @@ This system simulates high-demand product launches where users compete for limit
 
 ---
 
-# Related Repositories
+# Related Links
 
 Frontend Repository:  
 https://github.com/mdmasharafilhossain/Techzu-Client
