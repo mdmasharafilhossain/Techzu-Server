@@ -169,7 +169,6 @@ expiresAt = current time + 60 seconds
 ```
 In backround function runs after 5 seconds to find expired reservations.If expired, then mark them as expired and also retrieve stock automatically. Emit websockets events to notify clientsWhen a user makes a reservation for a product, the system stores the reservation expiration time.
 
-In backround function runs after 5 seconds to find expired reservations.If expired, then mark them as expired and also retrieve stock automatically. Emit websockets events to notify clients.
 ---
 # Concurrency: How did you prevent multiple users from claiming the same last item?
 
