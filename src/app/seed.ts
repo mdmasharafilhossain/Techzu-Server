@@ -5,9 +5,9 @@ async function main() {
   await prisma.user.createMany({
     data: [
       { username: "Mashrafil" },
-      { username: "Rahim" },
-      { username: "Karim" },
-      { username: "John" }
+      { username: "Hossain" },
+      { username: "Mahi" },
+     
     ],
     skipDuplicates: true
   });
