@@ -134,8 +134,8 @@ Before running the project, ensure you have:
 
 ## 1️⃣ Clone & Install
 ```bash
-git clone https://github.com/your-username/backend-repo
-cd backend-repo
+git clone https://github.com/mdmasharafilhossain/Techzu-Server
+cd Techzu-Server
 npm install
 ````
 ## 2️⃣ Setup Environment Variables
@@ -160,6 +160,7 @@ npm run seed
 ```bash
 npm run dev
 ````
+---
 
 # Architecture Choice: How did you handle the 60-second expiration logic?
 When a user makes a reservation for a product, the system stores the reservation expiration time.
@@ -169,7 +170,7 @@ expiresAt = current time + 60 seconds
 In backround function runs after 5 seconds to find expired reservations.If expired, then mark them as expired and also retrieve stock automatically. Emit websockets events to notify clientsWhen a user makes a reservation for a product, the system stores the reservation expiration time.
 
 In backround function runs after 5 seconds to find expired reservations.If expired, then mark them as expired and also retrieve stock automatically. Emit websockets events to notify clients.
-
+---
 # Concurrency: How did you prevent multiple users from claiming the same last item?
 
 When multiple users try to reserve at the same time, that’s a big problem. That’s why I used PostgreSQL’s row-level locking (FOR UPDATE) inside a database transaction to prevent overselling in the reservation system. First, I lock the row of the drop I want to reserve from the database, so that no other request can change the same row at the same time. To do this locking, I used a SELECT ... FOR UPDATE query. For example:
